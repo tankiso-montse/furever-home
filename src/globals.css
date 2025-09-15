@@ -13,6 +13,10 @@
   --font-inter: var(--font-inter);
   --font-red-rose: var(--font-red-rose);
   --font-instrument-sans: var(--font-instrument-sans);
+  --animate-slideInFromRight: slideInFromRight 0.6s ease-in-out;
+  --animate-slideOutToRight: slideOutToRight 1s ease-in-out;
+  --animate-fadeIn: fadeIn 0.5s ease-in-out;
+  --animate-fadeOut: fadeOut 0.5s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,4 +34,50 @@ body {
   background: var(--background);
   color: var(--primary);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
