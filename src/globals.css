@@ -10,8 +10,9 @@
   --color-primary: var(--primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-playfair: var(--font-playfair-display);
   --font-inter: var(--font-inter);
+  --font-red-rose: var(--font-red-rose);
+  --font-instrument-sans: var(--font-instrument-sans);
 }
 
 @media (prefers-color-scheme: dark) {
