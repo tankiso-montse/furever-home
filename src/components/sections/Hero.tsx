@@ -21,6 +21,8 @@ function Hero() {
         <source src="/furever-home-hero.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
+      {/* Create a menu bar */}
+      {/* <div className='absolute w-full h-96 bg-white z-10 top-0'></div> */} 
     </section>
   )
 }
