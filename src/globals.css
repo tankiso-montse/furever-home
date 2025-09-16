@@ -3,11 +3,13 @@
 :root {
   --background: #000000;
   --primary: #FFFFFF;
+  --seconday: #5C5B50;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-primary: var(--primary);
+  --color-secondary: var(--seconday);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
@@ -23,6 +25,7 @@
   :root {
     --background: #000000;
     --primary: #FFFFFF;
+    --seconday: #5C5B50;
   }
 }
 
