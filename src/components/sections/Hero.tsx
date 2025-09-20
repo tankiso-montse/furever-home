@@ -8,7 +8,7 @@ function Hero() {
 
 
   return (
-    <section className="relative w-full h-full bg-amber-950">
+    <section className="w-full h-full">
       <div className='flex flex-col justify-between h-full w-full absolute p-10 z-10'>
         <div className='flex justify-between pr-8'>
           <h1 className='font-red-rose text-8xl font-medium tracking-tighter'>Furever Home</h1>
