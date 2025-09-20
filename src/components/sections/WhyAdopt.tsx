@@ -5,8 +5,13 @@ import Button from '../ui/Button';
 
 function WhyAdopt() {
   const imageUrls = ['/family-photo-1.jpg', '/family-photo-2.jpg'];
-  const buttonLabels = ['Affordable & Ethical', 'Save a life', 'Lifelong Partner'];
-  const [activeButton, setActiveButton] = useState<string>('');
+  
+  const adoptionBenefits = [
+    { title: 'Affordable & Ethical', description: 'Adopting a pet is often more affordable than purchasing one from a breeder or pet store. Adoption fees typically cover vaccinations, spaying/neutering, and microchipping, making it a cost-effective option.' },
+    { title: 'Save a life', description: 'By adopting a pet, you are giving a homeless animal a second chance at life. Many shelter animals face euthanasia if not adopted, so your decision to adopt can save a life and provide a loving home.' },
+    { title: 'Lifelong Partner', description: 'Adopted pets often form strong bonds with their new owners, leading to lifelong companionship and loyalty. The gratitude and love from an adopted pet can be incredibly rewarding.' },
+  ]
+  const [activeButton, setActiveButton] = useState<string>(adoptionBenefits[0].title);
  
   
   return (
@@ -20,15 +25,17 @@ function WhyAdopt() {
         </div>
         <div className='w-11/12 h-32 flex flex-col gap-12 items-center'>
           <div className='flex gap-8'>
-            {buttonLabels.map((label, index) => (
+            {adoptionBenefits.map((adoptionBenefit, index) => (
               <Button 
                 key={index} 
-                onClick={() => setActiveButton(label)}
-                extraClasses={`${activeButton === label ? 'bg-secondary text-white' : ''}`}
-              >{label}</Button>
+                onClick={() => setActiveButton(adoptionBenefit.title)}
+                extraClasses={`${activeButton === adoptionBenefit.title ? 'bg-secondary text-white' : ''}`}
+              >{adoptionBenefit.title}</Button>
             ))}
           </div>
-          <p className='font-red-rose text-center text-secondary w-3/4'>Every adoption gives a pet a second chance at love and happiness. By choosing adoption, you’re helping reduce shelter overcrowding and rescuing an animal in need.</p>
+          {activeButton === adoptionBenefits.find(benefit => benefit.title === activeButton)?.title && (
+            <p className='max-w-3xl text-center font-instrument-sans text-lg text-gray-700 animate-fadeIn transition-all duration-500'>{adoptionBenefits.find(benefit => benefit.title === activeButton)?.description}</p>
+          )}
         </div>
       </div>
     </div>
