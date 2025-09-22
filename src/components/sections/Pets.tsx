@@ -30,11 +30,11 @@ function Pets() {
   return (
     <div className='w-full h-full grid grid-cols-2 bg-secondary'>
       <div className='w-full h-full flex flex-col justify-evenly items-center'>
-        {pets.find(pet => pet.name === currentPet) && (
+        {pets.find(pet => pet.name === currentDisplayedPet) && (
           <>
-            <h1 className='text-white text-8xl font-red-rose font-medium tracking-tighter'>{pets.find(pet => pet.name === currentPet)?.name}</h1>
-            <span className='text-xl'>Hey, I&apos;m {pets.find(pet => pet.name === currentPet)?.name}</span>
-            <p className='max-w-4/5 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentPet)?.description}</p>
+            <h1 className='text-white text-8xl font-red-rose font-medium tracking-tighter'>{pets.find(pet => pet.name === currentDisplayedPet)?.name}</h1>
+            <span className='text-xl'>Hey, I&apos;m {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
+            <p className='max-w-4/5 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</p>
           </>  
         )}
         <div>
