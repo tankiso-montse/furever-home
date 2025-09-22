@@ -8,7 +8,18 @@ function Hero() {
 
 
   return (
-    <section className="relative w-full h-full bg-amber-950">
+    <section className="w-full h-screen relative overflow-hidden">
+      {/* Create a menu bar */}
+      <div className={`absolute h-64 bg-white/30 top-7 right-0 rounded-l-3xl transition-all duration-1000 ${isMenuOpen
+        ? 'w-1/4 animate-slideInFromRight'
+        : 'w-0 animate-slideOutToRight'
+        }`}>
+        <ul className={`font-instrument-sans font-semibold text-xl flex flex-col gap-4 mx-16 my-12 transition-opacity duration-200 ${isMenuOpen ? 'opacity-100 delay-500' : 'opacity-0'}`}>
+          {menuNavItems.map((item) => {
+            return <li key={item} className='cursor-pointer hover:underline relative z-10 w-3/4'>{item}</li>
+          })}
+        </ul>
+      </div>
       <div className='flex flex-col justify-between h-full w-full absolute p-10 z-10'>
         <div className='flex justify-between pr-8'>
           <h1 className='font-red-rose text-8xl font-medium tracking-tighter'>Furever Home</h1>
@@ -23,24 +34,15 @@ function Hero() {
       <video
         autoPlay
         loop
+        preload="metadata"
         muted
         playsInline
         className="w-full h-full object-cover"
       >
-        <source src="/furever-home-hero.webm" type="video/webm" />
+        <source src="/furever-home-hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {/* Create a menu bar */}
-      <div className={`absolute h-64 bg-white/30 top-7 right-0 rounded-l-3xl transition-all duration-1000 ${isMenuOpen
-          ? 'w-1/4 animate-slideInFromRight'
-          : 'w-0 animate-slideOutToRight'
-        }`}>
-          <ul className={`font-instrument-sans font-semibold text-xl flex flex-col gap-4 mx-16 my-12 transition-opacity duration-200 ${isMenuOpen ? 'opacity-100 delay-500' : 'opacity-0'}`}>
-            {menuNavItems.map((item) =>  {
-              return <li key={item} className='cursor-pointer hover:underline relative z-10 w-3/4'>{item}</li>
-            })}
-          </ul>
-      </div>
+
     </section>
   )
 }
