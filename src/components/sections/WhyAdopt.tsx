@@ -15,12 +15,12 @@ function WhyAdopt() {
  
   
   return (
-    <div className='w-full h-screen bg-white p-20'>
-      <div className='h-full flex flex-col items-center justify-between px-14'>
+    <div className='w-full h-screen bg-white md:p-12 lg:p-20'>
+      <div className='h-full flex flex-col items-center justify-around lg:justify-between xl:px-14 gap-12 md:gap-0'>
         <h1 className='text-secondary text-6xl tracking-tighter font-instrument-sans font-semibold'>WHY ADOPT</h1>
-        <div className='grid grid-cols-2 w-11/12 min-h-80 h-80 rounded-4xl overflow-hidden'>
+        <div className='grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 lg:w-full xl:w-11/12 min-h-96 lg:min-h-80 rounded-4xl overflow-hidden bg-green-500'>
           {imageUrls.map((url, index) => (
-            <Image key={index} src={url} alt={`family-${index + 1}`} width={200} height={200} className='w-full bg-cover bg-center' />
+            <Image key={index} src={url} alt={`family-${index + 1}`} width={200} height={200} className='w-full h-full bg-cover bg-center' />
           ))}
         </div>
         <div className='w-11/12 h-32 flex flex-col gap-12 items-center'>

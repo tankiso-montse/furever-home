@@ -4,7 +4,7 @@ import WhyAdopt from "@/components/sections/WhyAdopt";
 
 export default function Home() {
   return (
-    <main className="h-full w-full">
+    <main className="h-screen w-full">
       <Hero />
       <WhyAdopt />
     </main>
