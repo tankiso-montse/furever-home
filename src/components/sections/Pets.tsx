@@ -26,23 +26,40 @@ function Pets() {
     },
   ]
 
+  const handleNextPet = () => {
+    const currentIndex = pets.findIndex(pet => pet.name === currentDisplayedPet);
+    const nextIndex = (currentIndex + 1) % pets.length;
+    setCurrentDisplayedPet(pets[nextIndex].name);
+    console.log(currentDisplayedPet);
+  }
+
 
   return (
     <div className='w-full h-full grid grid-cols-2 bg-secondary'>
-      <div className='w-full h-full flex flex-col justify-evenly items-center'>
-        {pets.find(pet => pet.name === currentDisplayedPet) && (
-          <>
-            <h1 className='text-white text-8xl font-red-rose font-medium tracking-tighter'>{pets.find(pet => pet.name === currentDisplayedPet)?.name}</h1>
-            <span className='text-xl'>Hey, I&apos;m {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
-            <p className='max-w-4/5 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</p>
-          </>  
-        )}
-        <div>
-          <Button>Adopt Me</Button>
+      <div className='w-full h-full grid grid-cols-[10%_80%_10%]'>
+        <div className='w-full h-full flex justify-end pb-36'>
+          <Image src={'/icons/left-arrow.svg'} alt='left-arrow' width={24} height={24} className='cursor-pointer' />
+        </div>
+        <div className='w-full h-full flex flex-col justify-evenly items-center'>
+          {pets.find(pet => pet.name === currentDisplayedPet) && (
+            <>
+              <h1 className='text-white text-8xl font-red-rose font-medium tracking-tighter'>{pets.find(pet => pet.name === currentDisplayedPet)?.name}</h1>
+              <span className='text-xl'>Hey, I&apos;m {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
+              <p className='max-w-4/5 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</p>
+            </>
+          )}
+          <div>
+            <Button>Adopt Me</Button>
+          </div>
+        </div>
+        <div className='w-full h-full flex pb-36'>
+          <Image src={'/icons/right-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet()} className='cursor-pointer' />
         </div>
       </div>
-      <div className='w-full overflow-hidden'>
-        <Image src={'/pets/bishop.jpeg'} alt='bishop' width={300} height={400} className='w-full' />
+      <div className='w-full h-4/5 overflow-hidden py-8 flex justify-center place-self-center-safe'>
+        {pets.find(pet => pet.name === currentDisplayedPet) && (
+          <Image src={pets.find(pet => pet.name === currentDisplayedPet)?.image || ''} alt={pets.find(pet => pet.name === currentDisplayedPet)?.name || ''} width={800} height={600} className='w-4/5 object-fill rounded-2xl' />
+        )}
       </div>
     </div>
   )
