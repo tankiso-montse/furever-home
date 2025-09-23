@@ -26,11 +26,15 @@ function Pets() {
     },
   ]
 
-  const handleNextPet = () => {
+  const handleNextPet = (Arrow: string) => {
     const currentIndex = pets.findIndex(pet => pet.name === currentDisplayedPet);
-    const nextIndex = (currentIndex + 1) % pets.length;
-    setCurrentDisplayedPet(pets[nextIndex].name);
-    console.log(currentDisplayedPet);
+    if (Arrow === 'Left') {
+      const nextIndex = (currentIndex + 1) % pets.length;
+      setCurrentDisplayedPet(pets[nextIndex].name);
+    } else if (Arrow === 'Right') {
+      const nextIndex = (currentIndex - 1 + pets.length) % pets.length;
+      setCurrentDisplayedPet(pets[nextIndex].name);
+    }
   }
 
 
@@ -41,9 +45,9 @@ function Pets() {
           <>
             <h1 className='text-white text-6xl font-instrument-sans font-semibold tracking-tighter'>PETS</h1>
             <div className='w-4/5 flex justify-between'>
-              <Image src={'/icons/left-arrow.svg'} alt='left-arrow' width={24} height={24} className='cursor-pointer' />
+              <Image src={'/icons/left-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Left')} className='cursor-pointer' />
               <span className='text-2xl font-red-rose'>Meet {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
-              <Image src={'/icons/right-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet()} className='cursor-pointer' />
+              <Image src={'/icons/right-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Right')} className='cursor-pointer' />
             </div>
             <p className='max-w-4/5 min-h-32 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</p>
           </>
