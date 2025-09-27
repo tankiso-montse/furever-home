@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import Button from '../ui/Button';
+import { motion } from 'motion/react';
+import { fadeIn } from '@/lib/animations';
 
 function Pets() {
   const [currentDisplayedPet, setCurrentDisplayedPet] = useState<string>('Bishop');
@@ -45,22 +47,22 @@ function Pets() {
           <>
             <h1 className='text-white text-6xl font-instrument-sans font-semibold tracking-tighter'>PETS</h1>
             <div className='w-4/5 flex justify-between'>
-              <Image src={'/icons/left-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Left')} className='cursor-pointer' />
-              <span className='text-2xl font-red-rose'>Meet {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
-              <Image src={'/icons/right-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Right')} className='cursor-pointer' />
+              <Image src={'/icons/left-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Left')} className='cursor-pointer transition-all duration-300 hover:scale-125' />
+              <span className='text-2xl font-red-rose w-44'>Meet {pets.find(pet => pet.name === currentDisplayedPet)?.name}</span>
+              <Image src={'/icons/right-arrow.svg'} alt='left-arrow' width={24} height={24} onClick={() => handleNextPet('Right')} className='cursor-pointer transition-all duration-300 hover:scale-125' />
             </div>
-            <p className='max-w-4/5 min-h-32 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</p>
+            <motion.p className='max-w-4/5 min-h-32 text-center text-white font-instrument-sans leading-5'>{pets.find(pet => pet.name === currentDisplayedPet)?.description}</motion.p>
           </>
         )}
         <div>
-          <Button>Adopt Me</Button>
+          <Button extraClasses='hover:bg-tertiary hover:text-white'>Adopt Me</Button>
         </div>
       </div>
-      <div className='w-full h-full overflow-hidden flex justify-center place-self-center-safe'>
+      <motion.div key={currentDisplayedPet} {...fadeIn} transition={{ duration: 0.2, ease: 'easeInOut'}} className='w-full h-full overflow-hidden flex justify-center place-self-center-safe'>
         {pets.find(pet => pet.name === currentDisplayedPet) && (
           <Image src={pets.find(pet => pet.name === currentDisplayedPet)?.image || ''} alt={pets.find(pet => pet.name === currentDisplayedPet)?.name || ''} width={800} height={600} className='w-full object-fill' />
         )}
-      </div>
+      </motion.div>
     </div>
   )
 }
