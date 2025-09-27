@@ -1,4 +1,6 @@
 'use client'
+import { slideInFromBottom, slideInFromTop } from '@/lib/animations';
+import { motion } from 'motion/react';
 import Image from 'next/image'
 import React, { useState } from 'react'
 
@@ -21,15 +23,15 @@ function Hero() {
         </ul>
       </div>
       <div className='flex flex-col justify-between h-full w-full absolute p-10 z-10'>
-        <div className='flex justify-between pr-8'>
+        <motion.div {...slideInFromTop} transition={{duration: 0.4, ease: 'easeInOut'}} className='flex justify-between pr-8'>
           <h1 className='font-red-rose text-8xl font-medium tracking-tighter'>Furever Home</h1>
           {isMenuOpen ?
             <Image src={'/icons/close.svg'} alt='close-menu' width={30} height={30} className='cursor-pointer relative z-20' onClick={() => setIsMenuOpen(false)} />
             :
             <Image src={'/icons/menu-bar.svg'} alt='menu-bar' width={50} height={50} className='cursor-pointer' onClick={() => setIsMenuOpen(true)} />
           }
-        </div>
-        <p className='max-w-lg self-end leading-5 font-instrument-sans'>Every pet deserves a loving home, and every person deserves the joy of a loyal companion. With thousands of cats, dogs, and other furry friends waiting, your perfect match could be just a click away.</p>
+        </motion.div>
+        <motion.p {...slideInFromBottom} transition={{duration: 0.4, ease: 'easeInOut'}} className='max-w-lg self-end leading-5 font-instrument-sans'>Every pet deserves a loving home, and every person deserves the joy of a loyal companion. With thousands of cats, dogs, and other furry friends waiting, your perfect match could be just a click away.</motion.p>
       </div>
       <video
         autoPlay
